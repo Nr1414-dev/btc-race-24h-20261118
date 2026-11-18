@@ -24,7 +24,10 @@ cbBTC/USDC bars, BTC fell 2.8% over it):
 Local backtest on the dev window (exact integer fill math from the kit's
 harness: fee 4 bps, slippage 2 bps, constant-product impact vs the bar's
 open depth, fills at the next bar's open): net PnL +$5.36, 3 round trips,
-max drawdown 1.24%. Buy-and-hold on the same window is -$31.63.
+max drawdown 1.26% — verified by a protocol-level replay of this exact
+main.py over all 1,440 dev bars, run twice with byte-identical replies.
+Buy-and-hold on the same window is -$31.63. The kit's EMA 8/21 baseline
+loses -$148.17 on it (80 trades of whipsaw).
 
 Determinism: pure float64 EMA arithmetic on the bars as they arrive, no
 clock, no randomness, no network, no files. The same bars always give the
